@@ -1,0 +1,6 @@
+.root {
+  position: relative;
+  background: url(../../public/background.png), lightgray 50% / cover no-repeat;
+  width: 450px;
+  height: 852px;
+}

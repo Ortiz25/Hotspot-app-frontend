@@ -1,0 +1,186 @@
+.root {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: url(../../public/background.png), lightgray 50% / cover no-repeat;
+  z-index: 1;
+}
+
+.heading {
+  position: absolute;
+  top: 19px;
+  width: 98px;
+  height: 35px;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.canvas {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 172px;
+  width: 100%;
+  height: 680px;
+
+  background-color: #e0dede;
+}
+
+.canvas-info {
+  position: absolute;
+
+  top: 18px;
+  width: 340px;
+  height: 334px;
+  flex-shrink: 0;
+  border-radius: 40px;
+  background: #f2efef;
+}
+label {
+  color: #8c8784;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 520;
+  line-height: normal;
+}
+.label1 {
+  position: absolute;
+  left: 18px;
+  top: 28px;
+}
+
+.label2 {
+  position: absolute;
+  left: 18px;
+  top: 74px;
+}
+.label3 {
+  position: absolute;
+  left: 18px;
+  top: 126px;
+}
+.label4 {
+  position: absolute;
+  left: 18px;
+  top: 189px;
+}
+.label5 {
+  position: absolute;
+  left: 18px;
+  top: 241px;
+}
+
+.name1 {
+  position: absolute;
+  left: 220px;
+  top: 28px;
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 520;
+  line-height: normal;
+}
+
+.phone {
+  position: absolute;
+  left: 220px;
+  top: 74px;
+
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 520;
+  line-height: normal;
+}
+
+.email {
+  position: absolute;
+  left: 133px;
+  top: 126px;
+
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 520;
+  line-height: normal;
+}
+
+.gender {
+  position: absolute;
+  left: 283px;
+  top: 189px;
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 520;
+  line-height: normal;
+}
+
+.date {
+  position: absolute;
+  right: 20px;
+  top: 241px;
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 520;
+  line-height: normal;
+}
+
+hr {
+  width: 308.002px;
+  height: 1px;
+  background-color: #000;
+}
+
+.hr1 {
+  position: absolute;
+  top: 40px;
+  left: 12px;
+}
+
+.hr2 {
+  position: absolute;
+  top: 90px;
+  left: 12px;
+}
+
+.hr3 {
+  position: absolute;
+  top: 140px;
+  left: 12px;
+}
+
+.hr4 {
+  position: absolute;
+  top: 200px;
+  left: 12px;
+}
+
+.btn-edit {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 415px;
+
+  width: 170px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: #000;
+  color: white;
+  border: none;
+  text-decoration: none;
+}

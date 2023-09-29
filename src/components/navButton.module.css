@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  position: absolute;
+  top: 763px;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 48px;
+  border: 4px solid #000;
+  background: #b0adad;
+  width: 233px;
+  height: 60px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.icon {
+  height: 50px;
+  text-decoration: none;
+  color: #0b2447;
+}
+
+.iconHome,
+.iconMenu,
+.iconContact {
+  display: inline;
+  margin-top: 15px;
+}
+
+.iconHome {
+  height: 40px;
+  border-radius: 5px;
+}
+/* 
+@media screen and (max-width: 600px) {
+  .button {
+    left: 25%;
+  }
+} */

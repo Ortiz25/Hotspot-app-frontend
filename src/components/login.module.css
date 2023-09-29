@@ -1,0 +1,165 @@
+.root {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  background: url(../../public/background.png), lightgray 50% / cover no-repeat;
+}
+
+.wifi-icon {
+  position: absolute;
+  flex-shrink: 0;
+  fill: var(--ink-06, #fff);
+  left: 120px;
+  top: 194px;
+}
+
+.heading {
+  position: absolute;
+  left: 170px;
+  top: 192px;
+  width: 144px;
+  height: 68px;
+  flex-shrink: 0;
+  color: #fff;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Inter;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.active-box {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 281px;
+  width: 367px;
+  height: 452px;
+  flex-shrink: 0;
+  background-color: white;
+  border-radius: 42px;
+}
+
+.login {
+  position: absolute;
+  top: 38px;
+  width: 99px;
+  height: 29px;
+  flex-shrink: 0;
+  color: #000;
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+input {
+  width: 244px;
+  height: 52px;
+  border: 1px solid bla;
+  border-radius: 10px;
+
+  color: black;
+}
+.input-number {
+  position: absolute;
+  top: 119px;
+}
+
+input[type="number"]::placeholder {
+  text-align: center;
+  color: black;
+}
+
+.input-password {
+  position: absolute;
+  top: 226px;
+}
+input[type="password"]::placeholder {
+  text-align: center;
+  color: black;
+}
+
+.btn-login {
+  position: absolute;
+  top: 329px;
+  display: flex;
+  width: 194px;
+  height: 47px;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 4px;
+  background: var(--utility-warning, #ffac4b);
+}
+
+.forgot-txt {
+  position: absolute;
+  left: 166px;
+  top: 298px;
+  color: #0b0a0a;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.info-txt {
+  position: absolute;
+  left: 55px;
+  top: 399px;
+  color: #100f0f;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.signup {
+  position: absolute;
+  left: 243px;
+  top: 398px;
+  color: #1b1a1a;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 520;
+  line-height: normal;
+  text-decoration-line: underline;
+  width: 83px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.error {
+  position: absolute;
+  right: 61px;
+  top: 175px;
+  color: #fc1111;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.error1 {
+  position: absolute;
+  right: 61px;
+  top: 278px;
+  color: #fc1111;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

@@ -1,0 +1,21 @@
+.root {
+  position: relative;
+  background: url(../../public/background.png), lightgray 50% / cover no-repeat;
+  width: 393px;
+  height: 852px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  color: white;
+  font-size: 40px;
+  text-decoration: none;
+}
+
+.back {
+  color: white;
+  font-size: 40px;
+  margin: 20px;
+}

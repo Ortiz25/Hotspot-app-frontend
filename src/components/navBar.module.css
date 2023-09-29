@@ -1,0 +1,29 @@
+.cont {
+  height: 10vh;
+  background-color: #0d1282;
+}
+
+.internetbtn {
+  border: 1px solid white;
+  width: 150px;
+  border-radius: 10px;
+  color: black;
+  padding: 10px;
+  background-color: red;
+}
+
+.internetbtn i {
+  margin: 5px;
+}
+
+.balance {
+  display: flex;
+  border: 1px solid white;
+  justify-content: center;
+  width: 250px;
+  border-radius: 10px;
+  margin: auto;
+  height: 50px;
+  padding: 12px;
+  background-color: #1d5d9b;
+}

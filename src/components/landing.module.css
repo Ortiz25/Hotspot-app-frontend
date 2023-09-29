@@ -1,0 +1,84 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
+
+.root {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  background: url(../../public/background.png), lightgray 80% / cover no-repeat;
+}
+
+.wifiicon {
+  position: relative;
+  top: 256px;
+  width: 75px;
+  height: 65px;
+  flex-shrink: 0;
+  fill: var(--ink-06, #fff);
+  margin-right: 250px;
+}
+
+.heading {
+  position: absolute;
+  width: 211px;
+  height: 76px;
+  flex-shrink: 0;
+  color: #fff;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Inter;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  top: 261px;
+  margin-left: 80px;
+}
+
+.welcometxt {
+  position: absolute;
+  top: 414px;
+  width: 295px;
+  color: var(--ink-06, #fff);
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+}
+
+h3 {
+  font-family: Raleway;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 128%; /* 40.96px */
+  letter-spacing: -1px;
+}
+
+.btn {
+  position: absolute;
+  display: flex;
+  width: 231px;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  background: var(--utility-warning, #ffac4b);
+  top: 703px;
+
+  text-decoration: none;
+  color: black;
+}
