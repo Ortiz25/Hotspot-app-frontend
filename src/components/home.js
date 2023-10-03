@@ -75,7 +75,7 @@ function Home() {
             plan: videoElement.dataset.amount,
             user: userData.userNumber.trim(),
             mac: mac,
-            ip: ip,
+
             linkOrig: linkOrig,
             linkLogin: linkLogin,
           };
