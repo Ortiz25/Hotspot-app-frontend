@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./landing.module.css";
-import { Link, useLoaderData, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { mikrotikActions } from "../components/store/mikroInfo";
 
