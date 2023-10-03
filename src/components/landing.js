@@ -1,11 +1,10 @@
 import React from "react";
 import classes from "./landing.module.css";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { mikrotikActions } from "../components/store/mikroInfo";
 
 function Landing() {
-  const token = useLoaderData();
   const dispatch = useDispatch();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -14,6 +13,7 @@ function Landing() {
   const linkOrig = queryParams.get("link-orig");
   const linkLogin = queryParams.get("link-login");
   const username = queryParams.get("username");
+  const linkLoginOnly = queryParams.get("link-login-only");
 
   function handleMikrotikData() {
     dispatch(
@@ -22,7 +22,8 @@ function Landing() {
         ip: ip,
         username: username,
         linkOrig: linkOrig,
-        linlogin: linkLogin,
+        linklogin: linkLogin,
+        linkLogin0nly: linkLoginOnly,
       })
     );
   }

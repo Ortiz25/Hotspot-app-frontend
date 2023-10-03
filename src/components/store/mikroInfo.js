@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const intialMikrotikInfoState = {
-  mac: "mac",
+  mac: "",
   ip: "",
   username: "",
   linkOrig: "",
   linkLogin: "",
+  linkLoginOnly: "",
 };
 
 const mikrotikSlice = createSlice({
