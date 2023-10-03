@@ -78,6 +78,7 @@ function Home() {
 
             linkOrig: linkOrig,
             linkLogin: linkLogin,
+            linkLoginOnly: linkLoginOnly,
           };
           console.log(linkLogin, linkLoginOnly);
 
