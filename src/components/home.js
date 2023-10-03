@@ -79,10 +79,11 @@ function Home() {
             linkOrig: linkOrig,
             linkLogin: linkLogin,
           };
+          console.log(linkLogin, linkLoginOnly);
 
           submit(
             { username: userData.userNumber.trim(), password: "sam" },
-            { method: "post", encType: "text/plain", action: linkLoginOnly }
+            { method: "post", action: linkLoginOnly }
           );
 
           const response = await fetch(url, {
