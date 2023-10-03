@@ -11,7 +11,6 @@ function Landing() {
   const mac = queryParams.get("mac");
   const ip = queryParams.get("ip");
   const linkOrig = queryParams.get("link-orig");
-  const linkLogin = queryParams.get("link-login");
   const username = queryParams.get("username");
   const linkLoginOnly = queryParams.get("link-login-only");
 
@@ -22,7 +21,6 @@ function Landing() {
         ip: ip,
         username: username,
         linkOrig: linkOrig,
-        linklogin: linkLogin,
         linkLogin0nly: linkLoginOnly,
       })
     );
