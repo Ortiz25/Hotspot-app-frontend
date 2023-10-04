@@ -93,8 +93,8 @@ function Home() {
           const axiosInstance = axios.create({
             baseURL: api_url,
             auth: {
-              username: userData.userNumber.trim(),
-              password: "sam",
+              username: "admin",
+              password: "m0t0m0t0",
             },
           });
 
