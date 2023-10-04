@@ -87,6 +87,21 @@ function Home() {
           });
           const data = await response.json();
           console.log(data);
+          const api_url = "http://hotspot.lab/tool/fetch";
+
+          const responseMikrotik = await fetch(api_url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: userData.userNumber.trim(),
+              password: "sam",
+            }),
+          });
+          const data1 = await responseMikrotik.json();
+          console.log(data1);
+
           if (data.message === "access created") {
             console.log("true");
             navigate("/market");
