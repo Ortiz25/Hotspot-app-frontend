@@ -4,6 +4,7 @@ import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 function Home() {
   const { userData, addsData } = useLoaderData();
@@ -89,18 +90,25 @@ function Home() {
           console.log(data);
           const api_url = "http://hotspot.lab/login";
 
-          const responseMikrotik = await fetch(api_url, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
+          const axiosInstance = axios.create({
+            baseURL: api_url,
+            auth: {
               username: userData.userNumber.trim(),
               password: "sam",
-            }),
+            },
           });
-          const data1 = await responseMikrotik.json();
-          console.log(data1);
+
+          axiosInstance
+            .get("/")
+            .then((response) => {
+              console.log(
+                "Hotspot login triggered successfully:",
+                response.data
+              );
+            })
+            .catch((error) => {
+              console.error("Error triggering hotspot login:", error);
+            });
 
           if (data.message === "access created") {
             console.log("true");
