@@ -4,8 +4,6 @@ const intialMikrotikInfoState = {
   mac: "",
   ip: "",
   username: "",
-  linkOrig: "",
-  linkLogin: "",
   linkLoginOnly: "",
 };
 

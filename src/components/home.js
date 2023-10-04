@@ -14,8 +14,6 @@ function Home() {
   const submit = useSubmit();
   const mac = useSelector((state) => state.mac);
   const ip = useSelector((state) => state.ip);
-  const linkOrig = useSelector((state) => state.linkOrig);
-  const linkLogin = useSelector((state) => state.linkLogin);
   const linkLoginOnly = useSelector((state) => state.linkLoginOnly);
 
   useEffect(() => {
@@ -75,17 +73,9 @@ function Home() {
             plan: videoElement.dataset.amount,
             user: userData.userNumber.trim(),
             mac: mac,
-
-            linkOrig: linkOrig,
-            linkLogin: linkLogin,
             linkLoginOnly: linkLoginOnly,
           };
-          console.log(linkLogin, linkLoginOnly);
-
-          submit(
-            { username: userData.userNumber.trim(), password: "sam" },
-            { method: "post", action: linkLoginOnly }
-          );
+          console.log(ip, mac, linkLoginOnly);
 
           const response = await fetch(url, {
             method: "POST",

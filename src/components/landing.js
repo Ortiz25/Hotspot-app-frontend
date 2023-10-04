@@ -10,9 +10,9 @@ function Landing() {
   const queryParams = new URLSearchParams(location.search);
   const mac = queryParams.get("mac");
   const ip = queryParams.get("ip");
-  const linkOrig = queryParams.get("link-orig");
   const username = queryParams.get("username");
   const linkLoginOnly = queryParams.get("link-login-only");
+  console.log(mac, linkLoginOnly);
 
   function handleMikrotikData() {
     dispatch(
@@ -20,8 +20,7 @@ function Landing() {
         mac: mac,
         ip: ip,
         username: username,
-        linkOrig: linkOrig,
-        linkLogin0nly: linkLoginOnly,
+        linkLoginOnly: linkLoginOnly,
       })
     );
   }
