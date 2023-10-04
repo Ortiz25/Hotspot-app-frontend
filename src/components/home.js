@@ -88,7 +88,7 @@ function Home() {
           });
           const data = await response.json();
           console.log(data);
-          const api_url = "http://hotspot.lab/login";
+          const api_url = "https://livecrib.rent/";
 
           const axiosInstance = axios.create({
             baseURL: api_url,
