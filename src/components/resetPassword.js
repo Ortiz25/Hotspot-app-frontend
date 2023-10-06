@@ -66,7 +66,7 @@ export async function action({ request, params }) {
     return errors;
   }
 
-  let url = "https://vast-cyan-seahorse-wig.cyclic.app/resetpassword";
+  let url = "http://localhost:3000/resetpassword";
 
   const response = await fetch(url, {
     method: "POST",

@@ -20,7 +20,7 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const url = "https://vast-cyan-seahorse-wig.cyclic.app/balance";
+        const url = "http://localhost:3000/balance";
         const user = { userName: userData.userNumber };
         const response = await fetch(url, {
           method: "POST",
@@ -64,7 +64,7 @@ function Home() {
 
   useEffect(() => {
     const videoElements = videoRef.current;
-    const url = "https://vast-cyan-seahorse-wig.cyclic.app/access";
+    const url = "http://localhost:3000/access";
     // Add event listeners when the component mounts
     videoElements.forEach((videoElement, i) => {
       videoElement.addEventListener("ended", async function handleVideoEnd() {
@@ -88,7 +88,7 @@ function Home() {
           });
           const data = await response.json();
           console.log(data);
-          const api_url = "https://livecrib.rent/";
+          const api_url = "http://hotspot.lab/login";
 
           const axiosInstance = axios.create({
             baseURL: api_url,
@@ -261,8 +261,8 @@ export default Home;
 
 export async function loader() {
   const token = localStorage.getItem("token");
-  const url = "https://vast-cyan-seahorse-wig.cyclic.app/profile";
-  const url1 = "https://vast-cyan-seahorse-wig.cyclic.app//adds";
+  const url = "http://localhost:3000/profile";
+  const url1 = "http://localhost:3000//adds";
 
   const data = { token: token };
 
