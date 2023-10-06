@@ -51,7 +51,7 @@ export default EditProfile;
 
 export async function loader() {
   const token = localStorage.getItem("token");
-  const url = "https://vast-cyan-seahorse-wig.cyclic.app/profile";
+  const url = "https://livecribauth.com/profile";
   const data = { token: token };
 
   if (!token) {
@@ -83,7 +83,7 @@ export async function action({ request, params }) {
     token: loadToken(),
   };
   // console.log(updateData);
-  let url = "https://vast-cyan-seahorse-wig.cyclic.app/editprofile";
+  let url = "https://livecribauth.com/editprofile";
 
   const response = await fetch(url, {
     method: "POST",

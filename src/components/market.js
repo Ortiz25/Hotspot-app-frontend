@@ -11,7 +11,7 @@ function Market() {
 
   useEffect(() => {
     const videoElements = mediaRef.current;
-    const url = "https://vast-cyan-seahorse-wig.cyclic.app/access";
+    const url = "https://livecribauth.com/access";
     videoElements.forEach((videoElement, i) => {
       videoElement.addEventListener("ended", async function handleVideoEnd() {
         try {
@@ -122,8 +122,8 @@ export default Market;
 
 export async function loader() {
   const token = localStorage.getItem("token");
-  const url = "https://vast-cyan-seahorse-wig.cyclic.app/profile";
-  const url1 = "https://vast-cyan-seahorse-wig.cyclic.app/adds";
+  const url = "https://livecribauth.com/profile";
+  const url1 = "https://livecribauth.com/adds";
 
   const data = { token: token };
 

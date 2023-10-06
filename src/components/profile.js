@@ -43,7 +43,7 @@ export default Profile;
 
 export async function loader() {
   const token = localStorage.getItem("token");
-  const url = "https://vast-cyan-seahorse-wig.cyclic.app/profile";
+  const url = "https://livecribauth.com//profile";
   const data = { token: token };
 
   if (!token) {

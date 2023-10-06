@@ -20,7 +20,7 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const url = "http://localhost:3000/balance";
+        const url = "https://livecribauth.com/balance";
         const user = { userName: userData.userNumber };
         const response = await fetch(url, {
           method: "POST",
@@ -64,7 +64,7 @@ function Home() {
 
   useEffect(() => {
     const videoElements = videoRef.current;
-    const url = "http://localhost:3000/access";
+    const url = "https://livecribauth.com/access";
     // Add event listeners when the component mounts
     videoElements.forEach((videoElement, i) => {
       videoElement.addEventListener("ended", async function handleVideoEnd() {
@@ -261,8 +261,8 @@ export default Home;
 
 export async function loader() {
   const token = localStorage.getItem("token");
-  const url = "http://localhost:3000/profile";
-  const url1 = "http://localhost:3000//adds";
+  const url = "https://livecribauth.com/profile";
+  const url1 = "https://livecribauth.com/adds";
 
   const data = { token: token };
 
