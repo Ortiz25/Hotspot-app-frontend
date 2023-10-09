@@ -91,7 +91,7 @@ function Home() {
           const api_url = `http://hotspot.lab/login?username=${userData.userNumber.trim()}&password=sam`;
 
           const responseMikrotik = await fetch(api_url);
-          console.log(responseMikrotik.status);
+          console.log("mikrotik status", responseMikrotik.status);
           if (data.message === "access created") {
             console.log("true");
             navigate("/market");
