@@ -88,13 +88,24 @@ function Home() {
           const data = await response.json();
 
           const api_url = `http://hotspot.lab/login?username=${userData.userNumber.trim()}&password=sam`;
+
+          // Username and password for authentication
+          const username = userData.userNumber.trim();
+          const password = "sam";
+
+          // Data to send as form parameters
+          const dataM = new URLSearchParams();
+          dataM.append("username", username);
+          dataM.append("password", password);
+
+          // Set the Content-Type header to application/x-www-form-urlencoded
           const headers = {
-            "Access-Control-Allow-Origin": "*",
-            mode: "no-cors",
+            "Content-Type": "application/x-www-form-urlencoded",
           };
 
+          // Send the POST request
           axios
-            .get(api_url)
+            .post(api_url, data, { headers })
             .then((response) => {
               if (response.status === 200) {
                 console.log("Authentication successful");
