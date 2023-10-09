@@ -87,37 +87,11 @@ function Home() {
           });
           const data = await response.json();
 
-          const api_url = `http://hotspot.lab/login`;
+          const api_url = `http://hotspot.lab/login?username=${userData.userNumber.trim()}&password="sam`;
 
-          // Username and password for authentication
-          const username = userData.userNumber.trim();
-          const password = "sam";
+          const responseM = fetch(api_url);
 
-          // Data to send as form parameters
-          const dataM = new URLSearchParams();
-          dataM.append("username", username);
-          dataM.append("password", password);
-
-          // Set the Content-Type header to application/x-www-form-urlencoded
-          const headers = {
-            "Content-Type": "application/x-www-form-urlencoded",
-          };
-
-          // Send the POST request
-          axios
-            .post(api_url, data, { headers })
-            .then((response) => {
-              if (response.status === 200) {
-                console.log("Authentication successful");
-              } else {
-                console.log("Authentication failed");
-              }
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
-
-          console.log("mikrotik status");
+          console.log("mikrotik status", responseM);
           if (data.message === "access created") {
             console.log("true");
             navigate("/market");
