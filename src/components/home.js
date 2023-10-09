@@ -87,13 +87,14 @@ function Home() {
           });
           const data = await response.json();
 
-          const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password=sam`;
+          const api_url = `http://hotspot.lab/login?username=${userData.userNumber.trim()}&password=sam`;
           const headers = {
-            "Access-Control-Allow-Origin": "https://livecrib.rent",
+            "Access-Control-Allow-Origin": "*",
+            mode: "no-cors",
           };
 
           axios
-            .get(api_url, headers)
+            .get(api_url)
             .then((response) => {
               if (response.status === 200) {
                 console.log("Authentication successful");
