@@ -18,7 +18,7 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const url = "http://108.181.203.124:3000/balance";
+        const url = "https://livecribauth.com/balance";
         const user = { userName: userData.userNumber };
         const response = await fetch(url, {
           method: "POST",
@@ -62,7 +62,7 @@ function Home() {
 
   useEffect(() => {
     const videoElements = videoRef.current;
-    const url = "http://108.181.203.124:3000/access";
+    const url = "https://livecribauth.com/access";
     // Add event listeners when the component mounts
     videoElements.forEach((videoElement, i) => {
       videoElement.addEventListener("ended", async function handleVideoEnd() {
@@ -86,7 +86,7 @@ function Home() {
           });
           const data = await response.json();
 
-          const api_url = `http://hotspot.lab/login?username=${userData.userNumber.trim()}&password="sam`;
+          const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password="sam`;
 
           const responseM = fetch(api_url);
 
@@ -242,8 +242,8 @@ export default Home;
 
 export async function loader() {
   const token = localStorage.getItem("token");
-  const url = "http://108.181.203.124:3000/profile";
-  const url1 = "http://108.181.203.124:3000/adds";
+  const url = "https://livecribauth.com/profile";
+  const url1 = "https://livecribauth.com/adds";
 
   const data = { token: token };
 

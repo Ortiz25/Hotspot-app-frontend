@@ -51,7 +51,7 @@ export default EditProfile;
 
 export async function loader() {
   const token = localStorage.getItem("token");
-  const url = "http://108.181.203.124:3000/profile";
+  const url = "https://livecribauth.com/profile";
   const data = { token: token };
 
   if (!token) {
@@ -83,7 +83,7 @@ export async function action({ request, params }) {
     token: loadToken(),
   };
   // console.log(updateData);
-  let url = "http://108.181.203.124:3000/editprofile";
+  let url = "https://livecribauth.com/editprofile";
 
   const response = await fetch(url, {
     method: "POST",
