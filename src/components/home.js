@@ -88,32 +88,10 @@ function Home() {
           });
           const data = await response.json();
 
-          const api_url = "http://hotspot.lab/login";
+          const api_url = `http://hotspot.lab/login?username=${userData.userNumber.trim()}&password=sam`;
 
-          const username = userData.userNumber.trim();
-          const password = "sam";
-
-          const dataMikrotik = new URLSearchParams();
-          dataMikrotik.append("username", username);
-          dataMikrotik.append("password", password);
-
-          const headers = {
-            "Content-Type": "application/x-www-form-urlencoded",
-          };
-
-          axios
-            .post(api_url, dataMikrotik, { headers })
-            .then((response) => {
-              if (response.status === 200) {
-                console.log("Authentication successful");
-              } else {
-                console.log("Authentication failed");
-              }
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
-
+          const responseMikrotik = await fetch(api_url);
+          console.log(responseMikrotik.status);
           if (data.message === "access created") {
             console.log("true");
             navigate("/market");
