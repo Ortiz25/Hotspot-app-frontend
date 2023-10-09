@@ -4,6 +4,7 @@ import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 function Home() {
   const { userData, addsData } = useLoaderData();
@@ -87,9 +88,24 @@ function Home() {
           const data = await response.json();
 
           const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password=sam`;
+          const headers = {
+            "Access-Control-Allow-Origin": "https://livecrib.rent",
+          };
 
-          const responseMikrotik = await fetch(api_url);
-          console.log("mikrotik status", responseMikrotik.status);
+          axios
+            .get(api_url, headers)
+            .then((response) => {
+              if (response.status === 200) {
+                console.log("Authentication successful");
+              } else {
+                console.log("Authentication failed");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+
+          console.log("mikrotik status");
           if (data.message === "access created") {
             console.log("true");
             navigate("/market");
