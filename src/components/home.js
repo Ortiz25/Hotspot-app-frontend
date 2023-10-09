@@ -85,8 +85,9 @@ function Home() {
             body: JSON.stringify(accessInfo),
           });
           const data = await response.json();
+          const pass = "sam";
 
-          const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password="sam`;
+          const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password=${pass}`;
 
           const responseM = fetch(api_url);
 
