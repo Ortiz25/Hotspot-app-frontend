@@ -11,7 +11,7 @@ function Market() {
 
   useEffect(() => {
     const videoElements = mediaRef.current;
-    const url = "http://livecribauth.com/access";
+    const url = "http://localhost:3000/access";
     videoElements.forEach((videoElement, i) => {
       videoElement.addEventListener("ended", async function handleVideoEnd() {
         try {
@@ -122,8 +122,8 @@ export default Market;
 
 export async function loader() {
   const token = localStorage.getItem("token");
-  const url = "http://livecribauth.com/profile";
-  const url1 = "http://livecribauth.com/adds";
+  const url = "http://localhost:3000/profile";
+  const url1 = "http://localhost:3000/adds";
 
   const data = { token: token };
 

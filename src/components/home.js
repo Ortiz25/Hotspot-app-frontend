@@ -4,7 +4,6 @@ import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
 import { useSelector } from "react-redux";
-import axios from "axios";
 
 function Home() {
   const { userData, addsData } = useLoaderData();
@@ -19,7 +18,7 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const url = "https://livecribauth.com/balance";
+        const url = "https://localhost:3000/balance";
         const user = { userName: userData.userNumber };
         const response = await fetch(url, {
           method: "POST",
@@ -63,7 +62,7 @@ function Home() {
 
   useEffect(() => {
     const videoElements = videoRef.current;
-    const url = "https://livecribauth.com/access";
+    const url = "https://localhost:3000/access";
     // Add event listeners when the component mounts
     videoElements.forEach((videoElement, i) => {
       videoElement.addEventListener("ended", async function handleVideoEnd() {
@@ -243,8 +242,8 @@ export default Home;
 
 export async function loader() {
   const token = localStorage.getItem("token");
-  const url = "https://livecribauth.com/profile";
-  const url1 = "https://livecribauth.com/adds";
+  const url = "https://localhost:3000/profile";
+  const url1 = "https://localhost:3000/adds";
 
   const data = { token: token };
 

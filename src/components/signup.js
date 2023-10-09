@@ -98,7 +98,7 @@ export async function action({ request, params }) {
     return errors;
   }
 
-  let url = "http://livecribauth.com/signup";
+  let url = "http://localhost:3000/signup";
 
   const response = await fetch(url, {
     method: "POST",

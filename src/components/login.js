@@ -75,7 +75,7 @@ export async function action({ request, params }) {
     password: data.get("password"),
   };
 
-  let url = "http://livecribauth.com/login";
+  let url = "http://localhost:3000/login";
 
   const response = await fetch(url, {
     method: "POST",
