@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLoaderData, useNavigate, useSubmit } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
 import { useSelector } from "react-redux";
-import axios from "axios";
 
 function Home() {
   const { userData, addsData } = useLoaderData();
@@ -12,7 +11,6 @@ function Home() {
   const [dataBalance, setDataBalance] = useState(0);
   const videoRef = useRef([]);
   const navigate = useNavigate();
-  const submit = useSubmit();
   const mac = useSelector((state) => state.mac);
   const ip = useSelector((state) => state.ip);
   const linkLoginOnly = useSelector((state) => state.linkLoginOnly);
