@@ -87,27 +87,31 @@ function Home() {
             body: JSON.stringify(accessInfo),
           });
           const data = await response.json();
-          console.log(data);
+
           const api_url = "http://hotspot.lab/login";
 
-          const axiosInstance = axios.create({
-            baseURL: api_url,
-            auth: {
-              username: "admin",
-              password: "m0t0m0t0",
-            },
-          });
+          const username = userData.userNumber.trim();
+          const password = "sam";
 
-          axiosInstance
-            .get("/")
+          const dataMikrotik = new URLSearchParams();
+          dataMikrotik.append("username", username);
+          dataMikrotik.append("password", password);
+
+          const headers = {
+            "Content-Type": "application/x-www-form-urlencoded",
+          };
+
+          axios
+            .post(api_url, dataMikrotik, { headers })
             .then((response) => {
-              console.log(
-                "Hotspot login triggered successfully:",
-                response.data
-              );
+              if (response.status === 200) {
+                console.log("Authentication successful");
+              } else {
+                console.log("Authentication failed");
+              }
             })
             .catch((error) => {
-              console.error("Error triggering hotspot login:", error);
+              console.error("Error:", error);
             });
 
           if (data.message === "access created") {
