@@ -88,7 +88,7 @@ function Home() {
           });
           const data = await response.json();
 
-          const api_url = `http://hotspot.lab/login?username=${userData.userNumber.trim()}&password=sam`;
+          const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password=sam`;
 
           const responseMikrotik = await fetch(api_url);
           console.log("mikrotik status", responseMikrotik.status);
