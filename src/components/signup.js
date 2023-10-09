@@ -98,7 +98,7 @@ export async function action({ request, params }) {
     return errors;
   }
 
-  let url = "https://livecribauth.com/signup";
+  let url = "http://livecribauth.com/signup";
 
   const response = await fetch(url, {
     method: "POST",

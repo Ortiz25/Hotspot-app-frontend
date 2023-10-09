@@ -43,7 +43,7 @@ export default Profile;
 
 export async function loader() {
   const token = localStorage.getItem("token");
-  const url = "https://livecribauth.com/profile";
+  const url = "http://livecribauth.com/profile";
   const data = { token: token };
 
   if (!token) {
