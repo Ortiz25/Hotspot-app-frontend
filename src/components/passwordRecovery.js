@@ -96,7 +96,7 @@ export async function action({ request, params }) {
     return errors;
   }
 
-  let url = "http://localhost:3000/passwordrecovery";
+  let url = "http://108.181.203.124:3000/passwordrecovery";
 
   const response = await fetch(url, {
     method: "POST",

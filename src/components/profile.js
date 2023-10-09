@@ -43,7 +43,7 @@ export default Profile;
 
 export async function loader() {
   const token = localStorage.getItem("token");
-  const url = "http://localhost:3000/profile";
+  const url = "http://108.181.203.124:3000/profile";
   const data = { token: token };
 
   if (!token) {

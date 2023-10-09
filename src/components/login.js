@@ -75,7 +75,7 @@ export async function action({ request, params }) {
     password: data.get("password"),
   };
 
-  let url = "http://localhost:3000/login";
+  let url = "http://108.181.203.124:3000/login";
 
   const response = await fetch(url, {
     method: "POST",
