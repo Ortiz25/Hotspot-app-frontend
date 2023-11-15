@@ -116,9 +116,9 @@ function Home() {
   });
 
   return (
-    <div className={classes.root}>
-      <Navbar fixed="top">
-        <Container>
+    <>
+      <div className={classes.root}>
+        <div className={classes.navbar}>
           <span className={classes["wifi-icon"]}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -178,8 +178,8 @@ function Home() {
           <div
             className={classes["bundle-balance"]}
           >{`${dataBalance}MB used`}</div>
-        </Container>
-      </Navbar>
+        </div>
+      </div>
 
       <div className={classes["active-box"]}>
         {addsData.map((add, i) => {
@@ -244,7 +244,7 @@ function Home() {
           );
         })}
       </div>
-    </div>
+    </>
   );
 }
 

@@ -1,15 +1,18 @@
-.root {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  background: url(../../public/background.png), lightgray 50% / cover no-repeat;
-}
-
 .wifi-icon {
   position: absolute;
   left: 15%;
-  top: 32px;
+  top: 26px;
   fill: var(--ink-06, #fff);
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  height: 228px;
+  width: 100%;
+  background: url(../../public/background.png), lightgray 50% / cover no-repeat;
+  margin: 0;
+  display: inline;
+  z-index: 20;
 }
 
 .heading {
@@ -17,7 +20,6 @@
   top: 31px;
   width: 87px;
   height: 21px;
-  left: 17%;
   color: #fff;
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
@@ -40,6 +42,7 @@
   background-color: #47b544;
   border-radius: 10px;
   color: white;
+  padding: 10px;
 }
 
 .time-of-day {
@@ -94,7 +97,6 @@
   align-items: center;
   top: 240px;
   width: 100%;
-  height: 630px;
   overflow: scroll;
   scrollbar-width: none;
   background-color: #e0dede;
@@ -174,15 +176,42 @@
   font-weight: 400;
   line-height: normal;
 }
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 600px) {
   .bundle-balance {
-    left: 29%;
+    left: 20%;
+  }
+  .time-of-day,
+  .user,
+  .wifi-icon {
+    left: 1%;
+  }
+  .heading {
+    left: 6%;
+  }
+  .status-bar {
+    right: 1%;
   }
 }
 
 @media only screen and (min-width: 600px) {
   .bundle-balance {
     left: 30%;
+  }
+  .time-of-day,
+  .user,
+  .wifi-icon {
+    left: 1%;
+  }
+  .heading {
+    left: 4%;
+  }
+  .status-bar {
+    right: 1%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .bundle-balance {
+    left: 29%;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -199,5 +228,8 @@
 @media only screen and (min-width: 1200px) {
   .bundle-balance {
     left: 44%;
+  }
+  .heading {
+    left: 2.5%;
   }
 }

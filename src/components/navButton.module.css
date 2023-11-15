@@ -4,8 +4,8 @@
 }
 
 .button {
-  position: absolute;
-  top: 763px;
+  position: fixed;
+  bottom: 10px;
   display: flex;
   justify-content: space-evenly;
   border-radius: 48px;
@@ -34,9 +34,3 @@
   height: 40px;
   border-radius: 5px;
 }
-/* 
-@media screen and (max-width: 600px) {
-  .button {
-    left: 25%;
-  }
-} */
