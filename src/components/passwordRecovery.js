@@ -96,7 +96,7 @@ export async function action({ request, params }) {
     return errors;
   }
 
-  let url = "http://localhost:8080/passwordrecovery";
+  let url = "https://livecribauth.com/passwordrecovery";
 
   const response = await fetch(url, {
     method: "POST",
