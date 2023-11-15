@@ -26,15 +26,20 @@
   justify-content: center;
   top: 172px;
   width: 100%;
-  height: 680px;
-
+  height: 85vh;
+  overflow-x: scroll;
   background-color: #e0dede;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.canvas::-webkit-scrollbar {
+  display: none;
 }
 
 .canvas-info {
   position: absolute;
 
-  top: 18px;
+  top: 48px;
   width: 340px;
   height: 334px;
   flex-shrink: 0;

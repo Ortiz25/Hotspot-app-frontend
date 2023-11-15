@@ -4,8 +4,6 @@ import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
 import { useSelector } from "react-redux";
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
 
 function Home() {
   const { userData, addsData } = useLoaderData();
