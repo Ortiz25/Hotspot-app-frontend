@@ -7,18 +7,17 @@
 
 .wifi-icon {
   position: absolute;
-  left: 16px;
-  top: 26px;
+  left: 15%;
+  top: 32px;
   fill: var(--ink-06, #fff);
 }
 
 .heading {
   position: absolute;
-  left: 41px;
   top: 31px;
   width: 87px;
   height: 21px;
-  flex-shrink: 0;
+  left: 17%;
   color: #fff;
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
@@ -33,7 +32,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  right: 13px;
+  right: 20%;
   top: 23px;
   width: 125px;
   height: 34px;
@@ -45,7 +44,7 @@
 
 .time-of-day {
   position: absolute;
-  left: 16px;
+  left: 15%;
   top: 101px;
   width: 148px;
   height: 24px;
@@ -58,7 +57,7 @@
 }
 .user {
   position: absolute;
-  left: 16px;
+  left: 15%;
   top: 131px;
   color: #fff;
   font-family: Inter;
@@ -73,7 +72,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   top: 185px;
   width: 244px;
   height: 39px;
@@ -127,6 +125,7 @@
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
+  margin: 5px;
   width: 346px;
   height: 42px;
   flex-shrink: 0;
@@ -174,4 +173,31 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+@media only screen and (max-width: 992px) {
+  .bundle-balance {
+    left: 29%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .bundle-balance {
+    left: 30%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .bundle-balance {
+    left: 36%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .bundle-balance {
+    left: 40%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .bundle-balance {
+    left: 44%;
+  }
 }

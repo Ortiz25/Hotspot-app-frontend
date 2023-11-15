@@ -1,6 +1,65 @@
 .root {
-  position: relative;
-  background: url(../../public/background.png), lightgray 50% / cover no-repeat;
-  width: 450px;
-  height: 852px;
+  background: url(../../public/background.png), lightgray 90% / cover no-repeat;
+  width: 100vw;
+  height:100vh;
 }
+
+
+/* Extra small devices (phones, 600px and down)
+@media only screen and (max-width: 600px) {
+  .root {
+    width: 600px;
+    height: 900px;
+    
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {
+  .root {
+    width: 450px;
+    height: 400px;
+  }
+} */
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {
+  .root {
+    width: 450px;
+    height: 400px;
+  }
+} */
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {
+  .root {
+    width: 450px;
+    height: 900px;
+    
+  }
+} */
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {
+  .root {
+    width: 450px;
+    height: 900px;
+  }
+}  */
+
+/* @media screen and (max-width: 360px) {
+  .root {
+    width: 360px;
+    height: 740px;
+  }
+}
+
+
+@media screen and (min-width: 361px) and (max-width: 480px) {
+  .root {
+    width: 480px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 960px) {
+  .root {
+    width: 960px;
+  }
+} 
+*/

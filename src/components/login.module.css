@@ -2,21 +2,18 @@
   position: relative;
   display: flex;
   justify-content: center;
-
-  background: url(../../public/background.png), lightgray 50% / cover no-repeat;
 }
 
 .wifi-icon {
   position: absolute;
-  flex-shrink: 0;
   fill: var(--ink-06, #fff);
-  left: 120px;
+  left: 30%;
   top: 194px;
 }
 
 .heading {
   position: absolute;
-  left: 170px;
+  left: 40%;
   top: 192px;
   width: 144px;
   height: 68px;
@@ -27,7 +24,7 @@
   font-family: Inter;
   font-size: 36px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
 }
 
@@ -38,14 +35,13 @@
   top: 281px;
   width: 367px;
   height: 452px;
-  flex-shrink: 0;
   background-color: white;
   border-radius: 42px;
 }
 
 .login {
   position: absolute;
-  top: 38px;
+  top: 10%;
   width: 99px;
   height: 29px;
   flex-shrink: 0;
@@ -60,9 +56,8 @@
 input {
   width: 244px;
   height: 52px;
-  border: 1px solid bla;
+  border: 2px solid black;
   border-radius: 10px;
-
   color: black;
 }
 .input-number {
@@ -94,15 +89,16 @@ input[type="password"]::placeholder {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
   border: none;
   border-radius: 4px;
   background: var(--utility-warning, #ffac4b);
+  color: black;
+  font-weight: 800;
 }
 
 .forgot-txt {
   position: absolute;
-  left: 166px;
+  left: 50%;
   top: 298px;
   color: #0b0a0a;
   font-family: Inter;
@@ -115,7 +111,7 @@ input[type="password"]::placeholder {
 
 .info-txt {
   position: absolute;
-  left: 55px;
+  left: 10%;
   top: 399px;
   color: #100f0f;
   font-family: Inter;
@@ -123,11 +119,12 @@ input[type="password"]::placeholder {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-right: 10px;
 }
 
 .signup {
   position: absolute;
-  left: 243px;
+  left: 61%;
   top: 398px;
   color: #1b1a1a;
   font-family: Inter;
@@ -155,11 +152,56 @@ input[type="password"]::placeholder {
 .error1 {
   position: absolute;
   right: 61px;
-  top: 278px;
+  top: 280px;
   color: #fc1111;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media only screen and (min-width: 600px) {
+  .wifi-icon {
+    left: 36%;
+  }
+
+  .heading {
+    left: 44%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .wifi-icon {
+    left: 40%;
+  }
+
+  .heading {
+    left: 46%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .wifi-icon {
+    left: 42%;
+  }
+
+  .heading {
+    left: 47%;
+  }
+  .signup {
+    left: 61%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .wifi-icon {
+    left: 45%;
+  }
+
+  .heading {
+    left: 48%;
+  }
+  .signup {
+    left: 61%;
+  }
 }

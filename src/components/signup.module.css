@@ -120,8 +120,8 @@ input[type="password"]::placeholder {
 }
 .signup {
   position: absolute;
-  left: 250px;
   top: 462px;
+  left: 68%;
   color: #1b1a1a;
   font-family: Inter;
   font-size: 16px;
@@ -167,4 +167,53 @@ input[type="password"]::placeholder {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media only screen and (max-width: 600px) {
+  .wifi-icon {
+    left: 30%;
+  }
+
+  .heading {
+    left: 40%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .wifi-icon {
+    left: 36%;
+  }
+
+  .heading {
+    left: 44%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .wifi-icon {
+    left: 40%;
+  }
+
+  .heading {
+    left: 46%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .wifi-icon {
+    left: 42%;
+  }
+
+  .heading {
+    left: 47%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .wifi-icon {
+    left: 45%;
+  }
+
+  .heading {
+    left: 48%;
+  }
 }

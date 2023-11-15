@@ -18,7 +18,6 @@
   position: relative;
   display: flex;
   justify-content: center;
-
   background: url(../../public/background.png), lightgray 80% / cover no-repeat;
 }
 

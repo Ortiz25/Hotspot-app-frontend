@@ -10,7 +10,7 @@
   justify-content: space-evenly;
   border-radius: 48px;
   border: 4px solid #000;
-  background: #b0adad;
+  background: rgba(252, 252, 252, 0.4);
   width: 233px;
   height: 60px;
   flex-shrink: 0;
