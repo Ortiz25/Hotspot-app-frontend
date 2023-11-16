@@ -9,10 +9,10 @@ function Home() {
   const { userData, addsData } = useLoaderData();
   const [isOnline, setOnline] = useState(false);
   const [dataBalance, setDataBalance] = useState(0);
+  const [planBalance, setPlanBalance] = useState(0);
   const videoRef = useRef([]);
   const navigate = useNavigate();
   const mac = useSelector((state) => state.mac);
-  const ip = useSelector((state) => state.ip);
   const linkLoginOnly = useSelector((state) => state.linkLoginOnly);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ function Home() {
             mac: mac,
             linkLoginOnly: linkLoginOnly,
           };
-          console.log(ip, mac, linkLoginOnly);
+          setPlanBalance(accessInfo.plan);
 
           const response = await fetch(url, {
             method: "POST",
@@ -173,9 +173,9 @@ function Home() {
           <span className={classes["time-of-day"]}>{userData.greet}</span>
           <span className={classes.user}>{userData.name}</span>
 
-          <div
-            className={classes["bundle-balance"]}
-          >{`${dataBalance}MB used`}</div>
+          <div className={classes["bundle-balance"]}>{`${
+            planBalance - dataBalance
+          }MB used`}</div>
         </div>
       </div>
 
