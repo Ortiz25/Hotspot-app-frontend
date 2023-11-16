@@ -3,7 +3,6 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
-import { useSelector } from "react-redux";
 
 function Home() {
   const { userData, addsData } = useLoaderData();
@@ -12,8 +11,6 @@ function Home() {
   const [planBalance, setPlanBalance] = useState(0);
   const videoRef = useRef([]);
   const navigate = useNavigate();
-  const mac = useSelector((state) => state.mac);
-  const linkLoginOnly = useSelector((state) => state.linkLoginOnly);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,7 +25,7 @@ function Home() {
           body: JSON.stringify(user),
         });
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         if (data.message === "limit does not exist") {
           return;
         }
@@ -41,7 +38,7 @@ function Home() {
       }
     }
     fetchData();
-  }, [userData.userNumber]);
+  }, [userData.userNumber, dataBalance, planBalance]);
 
   useEffect(() => {
     async function fetchData() {
@@ -67,14 +64,12 @@ function Home() {
     videoElements.forEach((videoElement, i) => {
       videoElement.addEventListener("ended", async function handleVideoEnd() {
         try {
-          console.log("Video ended", videoElement.dataset);
+          // console.log("Video ended", videoElement.dataset);
           const accessInfo = {
             plan: videoElement.dataset.amount,
             user: userData.userNumber.trim(),
-            mac: mac,
-            linkLoginOnly: linkLoginOnly,
           };
-          setPlanBalance(accessInfo.plan);
+          setPlanBalance(+accessInfo.plan.slice(0, 2));
 
           const response = await fetch(url, {
             method: "POST",
@@ -174,8 +169,8 @@ function Home() {
           <span className={classes.user}>{userData.name}</span>
 
           <div className={classes["bundle-balance"]}>{`${
-            planBalance - dataBalance
-          }MB used`}</div>
+            planBalance ? planBalance - dataBalance : 0
+          }MB Balance`}</div>
         </div>
       </div>
 
