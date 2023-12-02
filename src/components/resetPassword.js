@@ -62,7 +62,7 @@ export async function action({ request, params }) {
   };
 
   if (!resetData.number) {
-    errors.number = "enter a valid email";
+    errors.number = "enter a valid number";
     return errors;
   }
 

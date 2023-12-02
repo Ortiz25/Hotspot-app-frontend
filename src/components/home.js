@@ -1,60 +1,51 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
+import { checkStatus, disconnectClient, fetchData } from "../util/status";
+import RouterOSAPI from "mikronode-ng";
 
 function Home() {
+  const host = useSelector((state) => state.counter.ip);
+  const mac = useSelector((state) => state.counter.mac);
   const { userData, addsData } = useLoaderData();
   const [isOnline, setOnline] = useState(false);
   const [dataBalance, setDataBalance] = useState(0);
   const [planBalance, setPlanBalance] = useState(0);
   const videoRef = useRef([]);
   const navigate = useNavigate();
+  const [connection, setConnection] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
+    const data = setInterval(() => {
+      fetchData(setDataBalance, userData);
+    }, 15000);
+    const connect = async () => {
       try {
-        const url = "https://livecribauth.com/balance";
-        const user = { userName: userData.userNumber };
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(user),
+        const conn = new RouterOSAPI({
+          host: host,
+          user: "admin",
+          password: "m0t0m0t0",
         });
-        const data = await response.json();
-        // console.log(data);
-        if (data.message === "limit does not exist") {
-          return;
-        }
-
-        const balance = data.bundleBalance / 1000000;
-        setDataBalance(balance.toFixed(0));
+        await conn.connect();
+        setConnection(conn);
       } catch (err) {
-        console.log(err);
-        return setDataBalance(0);
+        console.error("Connection failed", err);
       }
+    };
+    connect();
+
+    if (dataBalance > planBalance) {
+      console.log("data limit exceeded");
+      disconnectClient(mac, connection);
+      return clearInterval(data);
     }
-    fetchData();
-  }, [userData.userNumber, dataBalance, planBalance]);
+  }, [userData, dataBalance, planBalance]);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const urlStatus = "https://jsonplaceholder.typicode.com/todos/1";
-        const responseStatus = await fetch(urlStatus);
-        if (responseStatus.status === 200) {
-          return setOnline(true);
-        } else {
-          return setOnline(false);
-        }
-      } catch (err) {
-        return setOnline(false);
-      }
-    }
-    fetchData();
+    checkStatus(setOnline);
   }, [isOnline]);
 
   useEffect(() => {
