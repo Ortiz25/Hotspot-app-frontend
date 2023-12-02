@@ -14,24 +14,21 @@ export const checkOnlineStatus = async () => {
   }
 };
 
-export async function disconnectClient(mac, connection) {
-  if (!connection) return;
+export async function disconnectClient(userId, axios, getHotspotUsers) {
   try {
-    const users = await connection.write("/ip/hotspot/active/getall", { mac });
-    console.log(users);
-    const user = users.find((u) => u.mac === mac);
-    console.log(user);
+    await axios.get("http://192.168.88.1/rest/ip/hotspot/active/disconnect", {
+      params: {
+        id: userId,
+      },
+      auth: {
+        username: "admin",
+        password: "m0t0m0t0",
+      },
+    });
 
-    if (user) {
-      await connection.write("/ip/hotspot/active/disconnect", {
-        ".id": user.id,
-      });
-      console.log(`Disconnected client ${mac}`);
-    } else {
-      console.log("Client not connected");
-    }
-  } catch (err) {
-    console.error("Disconnect failed:", err);
+    getHotspotUsers(); // refresh user list
+  } catch (error) {
+    console.log(error);
   }
 }
 

@@ -5,7 +5,7 @@ import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
 import { checkStatus, disconnectClient, fetchData } from "../util/status";
-import RouterOSAPI from "mikronode-ng";
+import axios from "axios";
 
 function Home() {
   const host = useSelector((state) => state.counter.ip);
@@ -16,30 +16,35 @@ function Home() {
   const [planBalance, setPlanBalance] = useState(0);
   const videoRef = useRef([]);
   const navigate = useNavigate();
-  const [connection, setConnection] = useState(null);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const data = setInterval(() => {
       fetchData(setDataBalance, userData);
     }, 15000);
-    const connect = async () => {
+    const getHotspotUsers = async () => {
       try {
-        const conn = new RouterOSAPI({
-          host: host,
-          user: "admin",
-          password: "m0t0m0t0",
-        });
-        await conn.connect();
-        setConnection(conn);
-      } catch (err) {
-        console.error("Connection failed", err);
+        const response = await axios.get(
+          `http://${host}/rest/ip/hotspot/active`,
+          {
+            auth: {
+              username: "admin",
+              password: "password",
+            },
+          }
+        );
+
+        setUsers(response.data);
+      } catch (error) {
+        console.log(error);
       }
     };
-    connect();
+    const userId = users.filter((user) => user.mac === mac);
+    console.log(users, userId);
 
     if (dataBalance > planBalance) {
       console.log("data limit exceeded");
-      disconnectClient(mac, connection);
+      disconnectClient(userId, axios, getHotspotUsers);
       return clearInterval(data);
     }
   }, [userData, dataBalance, planBalance]);
