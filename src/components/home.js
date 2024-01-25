@@ -45,7 +45,7 @@ function Home() {
       }
       fetchData();
     }, 1000);
-
+    console.log(`HOST:  ${host}`);
     const getHotspotUsers = async () => {
       try {
         const response = await axios.get(
