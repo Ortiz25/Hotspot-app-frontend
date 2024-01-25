@@ -4,24 +4,48 @@ import { useSelector } from "react-redux";
 import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
-import { checkStatus, disconnectClient, fetchData } from "../util/status";
+import { checkStatus, disconnectClient } from "../util/status";
 import axios from "axios";
 
 function Home() {
-  const host = useSelector((state) => state.counter.ip);
-  const mac = useSelector((state) => state.counter.mac);
+  const host = useSelector((state) => state.host);
+  const mac = useSelector((state) => state.mac);
   const { userData, addsData } = useLoaderData();
   const [isOnline, setOnline] = useState(false);
-  const [dataBalance, setDataBalance] = useState(0);
-  const [planBalance, setPlanBalance] = useState(0);
+  const [planBalance, setPlanBalance] = useState(null);
   const videoRef = useRef([]);
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const data = setInterval(() => {
-      fetchData(setDataBalance, userData);
-    }, 15000);
+    setTimeout(() => {
+      async function fetchData() {
+        try {
+          const url = "http://localhost:8000/balance";
+          const user = { userName: userData.userNumber };
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+          });
+          const data = await response.json();
+          // console.log(data);
+          if (data.message === "limit does not exist") {
+            return;
+          }
+          const balance = data.bundleBalance;
+          setPlanBalance(Math.trunc(balance / 1000000));
+          console.log("balance", balance);
+        } catch (err) {
+          console.log(err);
+          return;
+        }
+      }
+      fetchData();
+    }, 1000);
+
     const getHotspotUsers = async () => {
       try {
         const response = await axios.get(
@@ -39,15 +63,15 @@ function Home() {
         console.log(error);
       }
     };
-    const userId = users.filter((user) => user.mac === mac);
-    console.log(users, userId);
-
-    if (dataBalance > planBalance) {
+    // const userId = users.filter((user) => user.mac === mac);
+    // // console.log(users, userId);
+    // console.log(planBalance);
+    if (planBalance <= 0 && planBalance !== null) {
       console.log("data limit exceeded");
-      disconnectClient(userId, axios, getHotspotUsers);
-      return clearInterval(data);
+      // disconnectClient(userId, axios, getHotspotUsers);
     }
-  }, [userData, dataBalance, planBalance]);
+    // return clearInterval(data);
+  }, []);
 
   useEffect(() => {
     checkStatus(setOnline);
@@ -55,50 +79,56 @@ function Home() {
 
   useEffect(() => {
     const videoElements = videoRef.current;
-    const url = "https://livecribauth.com/access";
+    const url = "http://localhost:8000/access";
+
     // Add event listeners when the component mounts
-    videoElements.forEach((videoElement, i) => {
-      videoElement.addEventListener("ended", async function handleVideoEnd() {
-        try {
-          // console.log("Video ended", videoElement.dataset);
-          const accessInfo = {
-            plan: videoElement.dataset.amount,
-            user: userData.userNumber.trim(),
-          };
-          setPlanBalance(+accessInfo.plan.slice(0, 2));
+    videoElements.map((videoElement, index, array) => {
+      // console.log(array, videoElement);
+      return videoElement.addEventListener(
+        "ended",
+        async function handleVideoEnd() {
+          try {
+            // console.log("Video ended", videoElement.dataset);
+            const accessInfo = {
+              plan: videoElement.dataset.amount,
+              user: userData.userNumber.trim(),
+            };
 
-          const response = await fetch(url, {
-            method: "POST",
+            const response = await fetch(url, {
+              method: "POST",
 
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(accessInfo),
-          });
-          const data = await response.json();
-          const pass = "password";
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(accessInfo),
+            });
+            const data = await response.json();
+            const pass = "password";
 
-          const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password=${pass}`;
+            const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password=${pass}`;
 
-          const responseM = await fetch(api_url);
+            const responseM = await fetch(api_url);
 
-          console.log("mikrotik status", responseM);
-          if (data.message === "access created") {
-            console.log("true");
-            navigate("/market");
+            console.log("mikrotik status", responseM);
+            if (data.message === "access created") {
+              navigate("/market");
+            }
+          } catch (err) {
+            console.log(err);
           }
-        } catch (err) {
-          console.log(err);
         }
-      });
+      );
     });
 
     return () => {
       if (videoElements.length > 0) {
-        videoElements.forEach((videoElement, i) => {
-          videoElement?.removeEventListener("ended", function handleVideoEnd() {
-            console.log("Video ended");
-          });
+        videoElements.map((videoElement, i) => {
+          return videoElement?.removeEventListener(
+            "ended",
+            function handleVideoEnd() {
+              console.log("Video ended");
+            }
+          );
         });
       }
     };
@@ -165,8 +195,8 @@ function Home() {
           <span className={classes.user}>{userData.name}</span>
 
           <div className={classes["bundle-balance"]}>{`${
-            planBalance ? planBalance - dataBalance : 0
-          }MB Balance`}</div>
+            planBalance ? planBalance : 0
+          }  MB Balance`}</div>
         </div>
       </div>
 

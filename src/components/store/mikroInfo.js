@@ -1,18 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const intialMikrotikInfoState = {
-  mac: "",
-  ip: "",
-  username: "",
-  linkLoginOnly: "",
+  mac: null,
+  ip: null,
+  username: null,
+  plan: 0,
+  planBalance: 0,
 };
 
-const mikrotikSlice = createSlice({
+export const mikrotikSlice = createSlice({
   name: "counter",
   initialState: intialMikrotikInfoState,
   reducers: {
-    updateMikroInfo(state, action) {
-      return (state = action.payload);
+    updateMikroInfo: (state, action) => {
+      state.ip = action.payload.ip;
+      state.mac = action.payload.mac;
+      // switch (action.type) {
+      //   case "start":
+      //     return {
+      //       ...state,
+      //       ip: action.payload.ip,
+      //       mac: action.payload.mac,
+      //       username: action.payload.username,
+      //     };
+      //   case "s":
+      //     return { ...state, ip: action.payload };
+      //   case "plan":
+      //     return { ...state, plan: action.payload };
+      //   case "planBalance":
+      //     return { ...state, planBalance: action.payload };
+      //   default:
+      //     return state;
+      // }
     },
   },
 });

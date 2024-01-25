@@ -11,20 +11,13 @@ function Landing() {
   const mac = queryParams.get("mac");
   const ip = queryParams.get("ip");
   const username = queryParams.get("username");
-  const linkLoginOnly = queryParams.get("link-login-only");
-  console.log(mac, linkLoginOnly);
+  console.log(ip, mac);
 
   function handleMikrotikData() {
-    dispatch(
-      mikrotikActions.updateMikroInfo({
-        mac: mac,
-        ip: ip,
-        username: username,
-        linkLoginOnly: linkLoginOnly,
-      })
-    );
+    dispatch(mikrotikActions.updateMikroInfo({ ip: ip, mac: mac }));
+
+    console.log("info updated");
   }
-  handleMikrotikData();
 
   return (
     <div className={classes.root}>
@@ -48,7 +41,7 @@ function Landing() {
       <span className={classes.welcometxt}>
         <h3>Work and Play with fast internet</h3>
       </span>
-      <Link to="/login" className={classes.btn}>
+      <Link to="/login" className={classes.btn} onClick={handleMikrotikData}>
         Get Started
       </Link>
     </div>

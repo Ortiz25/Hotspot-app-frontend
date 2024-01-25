@@ -45,28 +45,3 @@ export async function checkStatus(setOnline) {
     return setOnline(false);
   }
 }
-
-export async function fetchData(setDataBalance, userData) {
-  try {
-    const url = "https://livecribauth.com/balance";
-    const user = { userName: userData.userNumber };
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
-    const data = await response.json();
-    // console.log(data);
-    if (data.message === "limit does not exist") {
-      return;
-    }
-
-    const balance = data.bundleBalance / 1000000;
-    setDataBalance(balance.toFixed(0));
-  } catch (err) {
-    console.log(err);
-    return setDataBalance(0);
-  }
-}
