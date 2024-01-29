@@ -112,8 +112,8 @@ function Home() {
       const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password=${pass}`;
 
       fetch(api_url);
+      window.location.replace("https://www.google.com/");
     }
-    // window.location.replace("https://www.google.com/");
   }
 
   return (
