@@ -40,15 +40,18 @@ function Home() {
         }
       }
       fetchData();
+      console.log(planBalance);
     }, 1000);
     return () => {
       clearTimeout(balanceTimer);
     };
-  });
+  }, planBalance);
 
   useEffect(() => {
     checkStatus(setOnline);
   }, [isOnline]);
+
+  console.log("Plan Balance", planBalance);
 
   useEffect(() => {
     const videoElements = videoRef.current;
