@@ -142,7 +142,7 @@ function Home() {
 
           <span
             className={classes["status-bar"]}
-            style={{ backgroundColor: isOnline ? "green" : "red" }}
+            style={{ backgroundColor: isOnline ? "green" : "#B31312" }}
           >
             {isOnline ? (
               <svg
