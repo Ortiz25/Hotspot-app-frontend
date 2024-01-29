@@ -8,7 +8,7 @@ import { checkStatus } from "../util/status";
 function Home() {
   const { userData, addsData } = useLoaderData();
   const [isOnline, setOnline] = useState(false);
-  const [planBalance, setPlanBalance] = useState(null);
+  const [planBalance, setPlanBalance] = useState(0);
   const videoRef = useRef([]);
   const navigate = useNavigate();
   const navigation = useNavigation();
@@ -17,7 +17,7 @@ function Home() {
     const balanceTimer = setTimeout(() => {
       async function fetchData() {
         try {
-          const url = "https://livecribauth.com/balance";
+          const url = "http://localhost:8000/balance";
           const user = { userName: userData.userNumber };
           const response = await fetch(url, {
             method: "POST",
@@ -45,7 +45,7 @@ function Home() {
     return () => {
       clearTimeout(balanceTimer);
     };
-  }, planBalance);
+  }, [planBalance]);
 
   useEffect(() => {
     checkStatus(setOnline);
@@ -81,7 +81,7 @@ function Home() {
             const data = await response.json();
             console.log(data);
             if (data.message === "access created") {
-              navigate("/market");
+              navigate("/home");
             }
           } catch (err) {
             console.log(err);
@@ -183,7 +183,7 @@ function Home() {
             className={classes["bundle-balance"]}
             type="submit"
             onClick={goOnline}
-            style={{ backgroundColor: planBalance ? "green" : "red" }}
+            style={{ backgroundColor: planBalance ? "green" : "#B31312" }}
           >{`${planBalance ? planBalance : 0}  MB ${
             planBalance ? " Go Online >>" : ""
           }`}</button>
