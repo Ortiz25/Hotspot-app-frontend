@@ -1,7 +1,7 @@
 .wifi-icon {
   position: absolute;
   left: 15%;
-  top: 26px;
+  top: 31px;
   fill: var(--ink-06, #fff);
 }
 .navbar {
@@ -75,9 +75,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 185px;
+  top: 180px;
   width: 244px;
-  height: 39px;
+  height: 45px;
   flex-shrink: 0;
   border-radius: 10px;
   background: #3a3735;
@@ -87,6 +87,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  border-style: none;
+  border: 2px solid white;
 }
 
 .active-box {
@@ -203,7 +205,7 @@
     left: 1%;
   }
   .heading {
-    left: 4%;
+    left: 5%;
   }
   .status-bar {
     right: 1%;
@@ -214,11 +216,17 @@
   .bundle-balance {
     left: 36%;
   }
+  .heading {
+    left: 4%;
+  }
 }
 
 @media only screen and (min-width: 992px) {
   .bundle-balance {
     left: 40%;
+  }
+  .heading {
+    left: 3%;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -226,6 +234,9 @@
     left: 44%;
   }
   .heading {
-    left: 2.5%;
+    left: 3%;
+  }
+  .go-online {
+    right: 50%;
   }
 }

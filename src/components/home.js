@@ -1,27 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useLoaderData, useNavigate, useNavigation } from "react-router-dom";
 import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
-import { checkStatus, disconnectClient } from "../util/status";
-import axios from "axios";
+import { checkStatus } from "../util/status";
 
 function Home() {
-  const host = useSelector((state) => state.host);
-  const mac = useSelector((state) => state.mac);
   const { userData, addsData } = useLoaderData();
   const [isOnline, setOnline] = useState(false);
   const [planBalance, setPlanBalance] = useState(null);
   const videoRef = useRef([]);
   const navigate = useNavigate();
-  const [users, setUsers] = useState([]);
+  const navigation = useNavigation();
 
   useEffect(() => {
-    setTimeout(() => {
+    const balanceTimer = setTimeout(() => {
       async function fetchData() {
         try {
-          const url = "https://livecribauth.com/balance";
+          const url = "http://localhost:8000/balance";
           const user = { userName: userData.userNumber };
           const response = await fetch(url, {
             method: "POST",
@@ -45,34 +41,10 @@ function Home() {
       }
       fetchData();
     }, 1000);
-    console.log(`HOST:  ${host}`);
-    const getHotspotUsers = async () => {
-      try {
-        const response = await axios.get(
-          `http://${host}/rest/ip/hotspot/active`,
-          {
-            auth: {
-              username: "admin",
-              password: "password",
-            },
-          }
-        );
-
-        setUsers(response.data);
-      } catch (error) {
-        console.log(error);
-      }
+    return () => {
+      clearTimeout(balanceTimer);
     };
-    getHotspotUsers();
-    const userId = users.filter((user) => user.mac === mac);
-    console.log(users, userId);
-    // console.log(planBalance);
-    if (planBalance <= 0 && planBalance !== null) {
-      console.log("data limit exceeded");
-      // disconnectClient(userId, axios, getHotspotUsers);
-    }
-    // return clearInterval(data);
-  }, []);
+  });
 
   useEffect(() => {
     checkStatus(setOnline);
@@ -80,7 +52,7 @@ function Home() {
 
   useEffect(() => {
     const videoElements = videoRef.current;
-    const url = "https://livecribauth.com/access";
+    const url = "http://localhost:8000/access";
 
     // Add event listeners when the component mounts
     videoElements.map((videoElement, index, array) => {
@@ -104,13 +76,7 @@ function Home() {
               body: JSON.stringify(accessInfo),
             });
             const data = await response.json();
-            const pass = "password";
-
-            const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password=${pass}`;
-
-            const responseM = await fetch(api_url);
-
-            console.log("mikrotik status", responseM);
+            console.log(data);
             if (data.message === "access created") {
               navigate("/market");
             }
@@ -135,6 +101,18 @@ function Home() {
     };
   });
 
+  function goOnline(e) {
+    e.preventDefault();
+    console.log(navigation.state);
+    const pass = "password";
+    if (!isOnline) {
+      const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password=${pass}`;
+
+      fetch(api_url);
+    }
+    // window.location.replace("https://www.google.com/");
+  }
+
   return (
     <>
       <div className={classes.root}>
@@ -156,6 +134,7 @@ function Home() {
             </svg>
           </span>
           <span className={classes.heading}>LiveCrib</span>
+
           <span
             className={classes["status-bar"]}
             style={{ backgroundColor: isOnline ? "green" : "red" }}
@@ -195,9 +174,14 @@ function Home() {
           <span className={classes["time-of-day"]}>{userData.greet}</span>
           <span className={classes.user}>{userData.name}</span>
 
-          <div className={classes["bundle-balance"]}>{`${
-            planBalance ? planBalance : 0
-          }  MB Balance`}</div>
+          <button
+            className={classes["bundle-balance"]}
+            type="submit"
+            onClick={goOnline}
+            style={{ backgroundColor: planBalance ? "green" : "red" }}
+          >{`${planBalance ? planBalance : 0}  MB ${
+            planBalance ? " Go Online >>" : ""
+          }`}</button>
         </div>
       </div>
 

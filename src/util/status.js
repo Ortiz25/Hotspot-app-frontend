@@ -14,24 +14,6 @@ export const checkOnlineStatus = async () => {
   }
 };
 
-export async function disconnectClient(userId, axios, getHotspotUsers) {
-  try {
-    await axios.get("http://192.168.88.1/rest/ip/hotspot/active/disconnect", {
-      params: {
-        id: userId,
-      },
-      auth: {
-        username: "admin",
-        password: "m0t0m0t0",
-      },
-    });
-
-    getHotspotUsers(); // refresh user list
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 export async function checkStatus(setOnline) {
   try {
     const urlStatus = "https://jsonplaceholder.typicode.com/todos/1";
