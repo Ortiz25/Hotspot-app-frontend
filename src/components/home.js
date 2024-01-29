@@ -17,7 +17,7 @@ function Home() {
     const balanceTimer = setTimeout(() => {
       async function fetchData() {
         try {
-          const url = "https://livecribauth.com//balance";
+          const url = "https://livecribauth.com/balance";
           const user = { userName: userData.userNumber };
           const response = await fetch(url, {
             method: "POST",
