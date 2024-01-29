@@ -17,7 +17,7 @@ function Home() {
     const balanceTimer = setTimeout(() => {
       async function fetchData() {
         try {
-          const url = "http://localhost:8000/balance";
+          const url = "https://livecribauth.com//balance";
           const user = { userName: userData.userNumber };
           const response = await fetch(url, {
             method: "POST",
@@ -52,7 +52,7 @@ function Home() {
 
   useEffect(() => {
     const videoElements = videoRef.current;
-    const url = "http://localhost:8000/access";
+    const url = "https://livecribauth.com/access";
 
     // Add event listeners when the component mounts
     videoElements.map((videoElement, index, array) => {
