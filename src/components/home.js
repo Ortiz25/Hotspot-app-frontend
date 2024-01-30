@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLoaderData, useNavigate, useNavigation } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
@@ -11,13 +11,12 @@ function Home() {
   const [planBalance, setPlanBalance] = useState(0);
   const videoRef = useRef([]);
   const navigate = useNavigate();
-  const navigation = useNavigation();
 
   useEffect(() => {
     const balanceTimer = setTimeout(() => {
       async function fetchData() {
         try {
-          const url = "http://localhost:8000/balance";
+          const url = "https://livecribauth.com/balance";
           const user = { userName: userData.userNumber };
           const response = await fetch(url, {
             method: "POST",
@@ -33,14 +32,12 @@ function Home() {
           }
           const balance = data.bundleBalance;
           setPlanBalance(Math.trunc(balance / 1000000));
-          console.log("balance", balance);
         } catch (err) {
           console.log(err);
           return;
         }
       }
       fetchData();
-      console.log(planBalance);
     }, 1000);
     return () => {
       clearTimeout(balanceTimer);
@@ -51,20 +48,15 @@ function Home() {
     checkStatus(setOnline);
   }, [isOnline]);
 
-  console.log("Plan Balance", planBalance);
-
   useEffect(() => {
     const videoElements = videoRef.current;
     const url = "https://livecribauth.com/access";
 
-    // Add event listeners when the component mounts
     videoElements.map((videoElement, index, array) => {
-      // console.log(array, videoElement);
       return videoElement.addEventListener(
         "ended",
         async function handleVideoEnd() {
           try {
-            // console.log("Video ended", videoElement.dataset);
             const accessInfo = {
               plan: videoElement.dataset.amount,
               user: userData.userNumber.trim(),
@@ -96,7 +88,7 @@ function Home() {
           return videoElement?.removeEventListener(
             "ended",
             function handleVideoEnd() {
-              console.log("Video ended");
+              // console.log("Video ended");
             }
           );
         });
@@ -106,7 +98,6 @@ function Home() {
 
   function goOnline(e) {
     e.preventDefault();
-    console.log(navigation.state);
     const pass = "password";
     if (!isOnline) {
       const api_url = `https://hotspot.lab/login?username=${userData.userNumber.trim()}&password=${pass}`;
@@ -115,6 +106,8 @@ function Home() {
       const timeOut = setTimeout(() => {
         window.location.replace("https://www.google.com/");
       }, 1000);
+    } else {
+      window.location.replace("https://www.google.com/");
     }
   }
 
@@ -163,7 +156,7 @@ function Home() {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="21"
-                height="14"
+                height="16"
                 viewBox="0 0 75 65"
                 fill="none"
               >

@@ -32,7 +32,7 @@ function Login() {
           name="number"
           type="number"
           className={classes["input-number"]}
-          placeholder="phone number"
+          placeholder="Phone number"
           style={{ border: errors ? "2px solid red" : null }}
         />
         {errors && errors.user && (
@@ -44,7 +44,7 @@ function Login() {
           name="password"
           type="password"
           className={classes["input-password"]}
-          placeholder="password"
+          placeholder="Password"
         />
         {errors && errors.password && (
           <span className={classes.error1}>{errors.password}</span>

@@ -48,7 +48,7 @@
 .time-of-day {
   position: absolute;
   left: 15%;
-  top: 101px;
+  top: 95px;
   width: 148px;
   height: 24px;
   color: #fff;
@@ -61,7 +61,7 @@
 .user {
   position: absolute;
   left: 15%;
-  top: 131px;
+  top: 120px;
   color: #fff;
   font-family: Inter;
   font-size: 32px;
@@ -75,7 +75,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 180px;
+  top: 174px;
   width: 244px;
   height: 45px;
   flex-shrink: 0;

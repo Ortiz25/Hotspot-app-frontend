@@ -10,13 +10,9 @@ function Landing() {
   const queryParams = new URLSearchParams(location.search);
   const mac = queryParams.get("mac");
   const ip = queryParams.get("ip");
-  const username = queryParams.get("username");
-  console.log(ip, mac);
 
   function handleMikrotikData() {
     dispatch(mikrotikActions.updateMikroInfo({ ip: ip, mac: mac }));
-
-    console.log("info updated");
   }
 
   return (

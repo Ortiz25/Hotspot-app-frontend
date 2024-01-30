@@ -31,7 +31,7 @@ function Signup() {
           name="number"
           id="number"
           className={classes["input-number"]}
-          placeholder="phone number"
+          placeholder="Phone number"
         />
         {errors && errors.number && (
           <span className={classes.error}>{errors.number}</span>
@@ -41,7 +41,7 @@ function Signup() {
           name="password"
           type="password"
           className={classes["input-password"]}
-          placeholder="password"
+          placeholder="Password"
         />
         {errors && errors.password && (
           <span className={classes.error1}>{errors.password}</span>
@@ -51,7 +51,7 @@ function Signup() {
           name="confirmPass"
           type="password"
           className={classes["input-confirm-password"]}
-          placeholder="confirm password"
+          placeholder="Confirm password"
         />
         {errors && errors.password && (
           <span className={classes.error2}>{errors.password}</span>
@@ -112,8 +112,5 @@ export async function action({ request, params }) {
     errors.number = dataResponse.message;
     return errors;
   }
-  // if (Object.keys(errors).length) {
-  //   return errors;
-  // }
   return redirect("/home");
 }
