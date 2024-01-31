@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./signup.module.css";
 import { Form, useActionData, redirect } from "react-router-dom";
 
 function Signup() {
   const errors = useActionData();
+  const [showPassword, updateShowPassword] = useState(false);
+
+  function HandleClick() {
+    if (showPassword) {
+      updateShowPassword(!showPassword);
+    } else {
+      updateShowPassword(!showPassword);
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -39,20 +48,36 @@ function Signup() {
         <input
           id="password"
           name="password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           className={classes["input-password"]}
           placeholder="Password"
         />
+        {showPassword ? (
+          <i
+            className="bi bi-eye-slash"
+            style={{ fontSize: "30px" }}
+            onClick={HandleClick}
+            id={classes.eye1}
+          ></i>
+        ) : (
+          <i
+            className="bi bi-eye"
+            style={{ fontSize: "30px" }}
+            onClick={HandleClick}
+            id={classes.eye1}
+          ></i>
+        )}
         {errors && errors.password && (
           <span className={classes.error1}>{errors.password}</span>
         )}
         <input
           id="confirmPass"
           name="confirmPass"
-          type="password"
+          type={showPassword ? "text" : "password"}
           className={classes["input-confirm-password"]}
           placeholder="Confirm password"
         />
+
         {errors && errors.password && (
           <span className={classes.error2}>{errors.password}</span>
         )}

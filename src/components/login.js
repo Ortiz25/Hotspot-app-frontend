@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./login.module.css";
 import { Link, Form, redirect, useActionData } from "react-router-dom";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Fm from "react-bootstrap/Form";
 
 function Login() {
   const errors = useActionData();
+  const [showPassword, updateShowPassword] = useState(false);
+
+  function HandleClick() {
+    if (showPassword) {
+      updateShowPassword(!showPassword);
+    } else {
+      updateShowPassword(!showPassword);
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -27,14 +38,16 @@ function Login() {
 
       <Form method="post" className={classes["active-box"]}>
         <span className={classes.login}>Login</span>
+
         <input
           id="number"
           name="number"
           type="number"
-          className={classes["input-number"]}
           placeholder="Phone number"
+          className={classes["input-number"]}
           style={{ border: errors ? "2px solid red" : null }}
         />
+
         {errors && errors.user && (
           <span className={classes.error}>{errors.user}</span>
         )}
@@ -42,10 +55,24 @@ function Login() {
         <input
           id="password"
           name="password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           className={classes["input-password"]}
           placeholder="Password"
         />
+        {showPassword ? (
+          <i
+            className="bi bi-eye-slash"
+            style={{ fontSize: "30px" }}
+            onClick={HandleClick}
+          ></i>
+        ) : (
+          <i
+            className="bi bi-eye"
+            style={{ fontSize: "30px" }}
+            onClick={HandleClick}
+          ></i>
+        )}
+
         {errors && errors.password && (
           <span className={classes.error1}>{errors.password}</span>
         )}

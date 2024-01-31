@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./passwordRecovery.module.css";
 import { Form, useActionData, redirect } from "react-router-dom";
 
 function PasswordRecovery() {
   const errors = useActionData();
+  const [showPassword, updateShowPassword] = useState(false);
+
+  function HandleClick() {
+    if (showPassword) {
+      updateShowPassword(!showPassword);
+    } else {
+      updateShowPassword(!showPassword);
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -27,19 +36,35 @@ function PasswordRecovery() {
       <Form method="post" className={classes["active-box"]}>
         <span className={classes["reset-heading"]}>Password Recovery</span>
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           name="recpassword"
           id="password"
           className={classes["input-number"]}
           placeholder="Recovery Password"
         />
+        {showPassword ? (
+          <i
+            className="bi bi-eye-slash"
+            style={{ fontSize: "30px" }}
+            onClick={HandleClick}
+            id={classes.eye1}
+          ></i>
+        ) : (
+          <i
+            className="bi bi-eye"
+            style={{ fontSize: "30px" }}
+            onClick={HandleClick}
+            id={classes.eye1}
+          ></i>
+        )}
+
         {errors && errors.resetPassword && (
           <span className={classes.error}>{errors.resetPassword}</span>
         )}
         <input
           id="new-password"
           name="newpassword"
-          type="password"
+          type={showPassword ? "text" : "password"}
           className={classes["input-password"]}
           placeholder="new password"
         />
@@ -49,7 +74,7 @@ function PasswordRecovery() {
         <input
           id="confirm-new-Password"
           name="confirmPass"
-          type="password"
+          type={showPassword ? "text" : "password"}
           className={classes["input-confirm-password"]}
           placeholder="confirm new password"
         />

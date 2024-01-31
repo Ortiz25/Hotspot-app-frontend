@@ -42,6 +42,7 @@
   flex-shrink: 0;
   background-color: white;
   border-radius: 42px;
+  box-shadow: 0px 0px 10px 0px whitesmoke;
 }
 
 .signup-heading {
@@ -81,13 +82,17 @@ input[type="number"]::placeholder {
 
   top: 178px;
 }
+#eye1 {
+  position: absolute;
+  right: 15%;
+  top: 188px;
+}
 input[type="password"]::placeholder {
   text-align: center;
   color: black;
 }
 .input-confirm-password {
   position: absolute;
-
   top: 271px;
 }
 
