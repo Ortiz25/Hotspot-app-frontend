@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import classes from "./home.module.css";
 import { redirect } from "react-router-dom";
 import video1 from "../assests/videos/hunt.mp4";
@@ -10,7 +10,7 @@ function Home() {
   const [isOnline, setOnline] = useState(false);
   const [planBalance, setPlanBalance] = useState(0);
   const videoRef = useRef([]);
-  const navigate = useNavigate();
+  const [bundleBalance, updateBalance] = useState(true);
 
   useEffect(() => {
     const balanceTimer = setTimeout(() => {
@@ -73,7 +73,7 @@ function Home() {
             const data = await response.json();
             console.log(data);
             if (data.message === "access created") {
-              navigate("/home");
+              updateBalance(!bundleBalance);
             }
           } catch (err) {
             console.log(err);
